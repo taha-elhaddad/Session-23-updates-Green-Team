@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movieapp/core/services/navigation/navigation_service.dart';
+import 'package:movieapp/ui/views/actors_view/actor_view.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../locator.dart';
 import '../../shared/ui_helper.dart';
 import '/ui/widgets/stateless/app_bar.dart';
 import 'actors_list_view_model.dart';
@@ -74,9 +77,8 @@ class _ActorsListViewState extends State<ActorsListView>
                       children: Iterable<int>.generate(20)
                           .map((e) => InkWell(
                         onTap: () async {
-
-
-
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ActorView(actor: null,)),
+                          );
                         },
                         child: Card(
                           elevation: 2,

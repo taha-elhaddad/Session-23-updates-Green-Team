@@ -72,4 +72,6 @@ class notAuthorizedIndicator extends StatelessWidget {
           ),
         ),
       );
+      
+        RaisedButton({required double elevation, required Color color, required Future<Null> Function() onPressed, Color? textColor, required EdgeInsets padding, required RoundedRectangleBorder shape, required Container child}) {}
 }

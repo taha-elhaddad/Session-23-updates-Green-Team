@@ -8,7 +8,6 @@ import '../../../core/services/key_storage/key_storage_service.dart';
 import '../../../locator.dart';
 
 class ActorsListViewModel extends BaseViewModel {
-
   BuildContext? context;
 
   Future<void> init(BuildContext context) async {

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:movieapp/ui/views/actors_list/actors_list_view.dart';
+import 'package:movieapp/ui/views/actors_view/actor_view.dart';
 import 'package:movieapp/ui/views/movie_view/movie_view.dart';
 import 'package:movieapp/ui/views/movies_list/movies_list_view.dart';
 import 'package:movieapp/ui/views/posts_list/posts_list_view.dart';
@@ -16,6 +17,7 @@ import 'views/startup/start_up_view.dart';
   AutoRoute(page: MoviesListView),
   AutoRoute(page: ActorsListView),
   AutoRoute(page: MovieView),
+  AutoRoute(page: ActorView),
   AutoRoute(page: PostsListView),
   AutoRoute(page: SettingsView),
 ])
