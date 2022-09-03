@@ -1,26 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movieapp/ui/widgets/stateless/movie_tile/movie_tile_view_model.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../../core/models/movie/movie.dart';
+import '../../../../core/models/actor/actor.dart';
 import '../../../shared/ui_helper.dart';
+import 'actor_tile_view_model.dart';
 
 /// A list tile for an article.
-class MovieTile extends StatelessWidget {
-  final Movie movie;
-  final ValueChanged<Movie> onChanged;
+class ActorTile extends StatelessWidget {
+  final Actor actor;
+  final ValueChanged<Actor> onChanged;
 
-  const MovieTile({required this.movie, required this.onChanged});
+  const ActorTile({required this.actor, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<MovieTileViewModel>.nonReactive(
-      viewModelBuilder: () => MovieTileViewModel(),
-      onModelReady: (model) => model.init(movie),
+    return ViewModelBuilder<ActorTileViewModel>.nonReactive(
+      viewModelBuilder: () => ActorTileViewModel(),
+      onModelReady: (model) => model.init(actor),
       builder: (context, model, child) => InkWell(
         onTap: () async {
-          model.moveToMovieViewRoute(context);
+          model.moveToActorViewRoute(context);
         },
         child: Card(
           elevation: 2,
@@ -34,7 +34,7 @@ class MovieTile extends StatelessWidget {
                   child: Container(
                     //color: Colors.r,
                     child: Image.network(
-                      movie.thumb ??
+                      actor.thumb ??
                           'https://freepikpsd.com/file/2019/10/placeholder-image-png-5-Transparent-Images.png',
                       fit: BoxFit.cover,
                     ),
@@ -52,22 +52,11 @@ class MovieTile extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  movie.title!,
+                                  actor.name!,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                              ),
-                              UIHelper.horizontalSpaceSmall(),
-                              Text("${DateTime.parse(movie.release_date!).year}"),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Thriller',
-                                style: TextStyle(),
                               ),
                               UIHelper.horizontalSpaceSmall(),
                             ],
@@ -76,13 +65,6 @@ class MovieTile extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Expanded(
-                                  child: Text(
-                                  movie.description!,
-                                  maxLines: 3,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(),
-                              )),
                             ],
                           ),
                         ],

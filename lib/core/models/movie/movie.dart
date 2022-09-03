@@ -22,6 +22,7 @@ abstract class Movie implements Built<Movie, MovieBuilder> {
 
   String? get img;
   String? get thumb;
+  String? get release_date;
 
   String? get description;
 
@@ -30,6 +31,8 @@ abstract class Movie implements Built<Movie, MovieBuilder> {
   RunningTime? get running_time;
 
   DateTime? get created_at;
+
+
 
   Movie._();
 

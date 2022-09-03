@@ -5,8 +5,11 @@ import 'package:flutter/rendering.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:movieapp/core/models/movie/movie.dart';
 import 'package:movieapp/generated/l10n.dart';
+import 'package:movieapp/ui/widgets/stateless/actor_tile/actor_tile.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../core/models/actor/actor.dart';
+import '../../../core/repositories/actors_repository/actors_repository.dart';
 import '/core/constant/end_point_parameters.dart';
 import '../../../../locator.dart';
 import '../../../core/repositories/movies_repository/movies_repository.dart';
@@ -14,26 +17,26 @@ import '../../widgets/stateless/indicators/empty_list_indicator.dart';
 import '../../widgets/stateless/indicators/error_indicator.dart';
 import '../../widgets/stateless/indicators/loading_circular_progress_indicator.dart';
 import '../../widgets/stateless/movie_tile/movie_tile.dart';
-import 'movies_list_view_model.dart';
+import 'actors_list_view_model.dart';
 
 // ignore: must_be_immutable
-class PagedMoviesListView extends StatefulWidget {
-  final ValueChanged<Movie> onMoviesClicked;
+class PagedActorsListView extends StatefulWidget {
+  final ValueChanged<Actor> onActorsClicked;
   Map<String, dynamic> parameters;
 
-  PagedMoviesListView(this.parameters, {required this.onMoviesClicked});
+  PagedActorsListView(this.parameters, {required this.onActorsClicked});
 
   @override
-  _PagedMoviesItemsListViewViewState createState() =>
-      _PagedMoviesItemsListViewViewState();
+  _PagedActorsItemsListViewViewState createState() =>
+      _PagedActorsItemsListViewViewState();
 }
 
-class _PagedMoviesItemsListViewViewState extends State<PagedMoviesListView> {
-  _PagedMoviesItemsListViewViewState();
+class _PagedActorsItemsListViewViewState extends State<PagedActorsListView> {
+  _PagedActorsItemsListViewViewState();
 
   final ScrollController? controller = ScrollController();
 
-  final _pagingController = PagingController<int, Movie>(
+  final _pagingController = PagingController<int, Actor>(
     firstPageKey: 1,
   );
 
@@ -47,7 +50,7 @@ class _PagedMoviesItemsListViewViewState extends State<PagedMoviesListView> {
   }
 
   @override
-  void didUpdateWidget(PagedMoviesListView oldWidget) {
+  void didUpdateWidget(PagedActorsListView oldWidget) {
     // if (oldWidget.listPreferences != widget.listPreferences) {
     //   widget.pagingController.refresh();
     // }
@@ -61,7 +64,7 @@ class _PagedMoviesItemsListViewViewState extends State<PagedMoviesListView> {
       parameters.putIfAbsent(EndPointParameter.PAGE, () => pageKey.toString());
       parameters[EndPointParameter.PAGE] = pageKey.toString();
 
-      var items = await locator<MoviesRepository>().fetchMoviesList(parameters);
+      var items = await locator<ActorsRepository>().fetchActorsList(parameters);
 
       if (items.isEmpty) {
         _pagingController.appendLastPage(items);
@@ -77,16 +80,16 @@ class _PagedMoviesItemsListViewViewState extends State<PagedMoviesListView> {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<MoviesListViewModel>.reactive(
-        viewModelBuilder: () => MoviesListViewModel(),
+    return ViewModelBuilder<ActorsListViewModel>.reactive(
+        viewModelBuilder: () => ActorsListViewModel(),
         builder: (context, model, child) => PagedListView.separated(
               physics: BouncingScrollPhysics(),
               scrollController: controller,
               pagingController: _pagingController,
-              builderDelegate: PagedChildBuilderDelegate<Movie>(
-                itemBuilder: (context, movie, index) => MovieTile(
-                  movie: movie,
-                  onChanged: (movie) {},
+              builderDelegate: PagedChildBuilderDelegate<Actor>(
+                itemBuilder: (context, actor, index) => ActorTile(
+                  actor: actor,
+                  onChanged: (value) {},
                 ),
                 firstPageProgressIndicatorBuilder: (context) =>
                     LoadingCircularProgressIndicator(),

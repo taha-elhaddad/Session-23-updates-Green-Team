@@ -47,6 +47,13 @@ class _$MovieSerializer implements StructuredSerializer<Movie> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.release_date;
+    if (value != null) {
+      result
+        ..add('release_date')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.description;
     if (value != null) {
       result
@@ -105,6 +112,10 @@ class _$MovieSerializer implements StructuredSerializer<Movie> {
           result.thumb = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'release_date':
+          result.release_date = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'description':
           result.description = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -138,6 +149,8 @@ class _$Movie extends Movie {
   @override
   final String? thumb;
   @override
+  final String? release_date;
+  @override
   final String? description;
   @override
   final bool? is_disabled;
@@ -154,6 +167,7 @@ class _$Movie extends Movie {
       this.title,
       this.img,
       this.thumb,
+      this.release_date,
       this.description,
       this.is_disabled,
       this.running_time,
@@ -175,6 +189,7 @@ class _$Movie extends Movie {
         title == other.title &&
         img == other.img &&
         thumb == other.thumb &&
+        release_date == other.release_date &&
         description == other.description &&
         is_disabled == other.is_disabled &&
         running_time == other.running_time &&
@@ -188,9 +203,11 @@ class _$Movie extends Movie {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, id.hashCode), title.hashCode),
-                            img.hashCode),
-                        thumb.hashCode),
+                        $jc(
+                            $jc($jc($jc(0, id.hashCode), title.hashCode),
+                                img.hashCode),
+                            thumb.hashCode),
+                        release_date.hashCode),
                     description.hashCode),
                 is_disabled.hashCode),
             running_time.hashCode),
@@ -204,6 +221,7 @@ class _$Movie extends Movie {
           ..add('title', title)
           ..add('img', img)
           ..add('thumb', thumb)
+          ..add('release_date', release_date)
           ..add('description', description)
           ..add('is_disabled', is_disabled)
           ..add('running_time', running_time)
@@ -230,6 +248,10 @@ class MovieBuilder implements Builder<Movie, MovieBuilder> {
   String? _thumb;
   String? get thumb => _$this._thumb;
   set thumb(String? thumb) => _$this._thumb = thumb;
+
+  String? _release_date;
+  String? get release_date => _$this._release_date;
+  set release_date(String? release_date) => _$this._release_date = release_date;
 
   String? _description;
   String? get description => _$this._description;
@@ -258,6 +280,7 @@ class MovieBuilder implements Builder<Movie, MovieBuilder> {
       _title = $v.title;
       _img = $v.img;
       _thumb = $v.thumb;
+      _release_date = $v.release_date;
       _description = $v.description;
       _is_disabled = $v.is_disabled;
       _running_time = $v.running_time?.toBuilder();
@@ -290,6 +313,7 @@ class MovieBuilder implements Builder<Movie, MovieBuilder> {
               title: title,
               img: img,
               thumb: thumb,
+              release_date: release_date,
               description: description,
               is_disabled: is_disabled,
               running_time: _running_time?.build(),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:movieapp/ui/shared/ui_helper.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../core/models/movie/movie.dart';
 import '/ui/shared/ui_helper.dart';
 import '/ui/widgets/stateless/app_bar.dart';
 import '../../widgets/stateless/indicators/loading_circular_progress_indicator.dart';
@@ -11,7 +12,10 @@ import 'movie_view_model.dart';
 
 // ignore: must_be_immutable
 class MovieView extends StatefulWidget {
-  MovieView();
+
+MovieView();
+
+
 
   @override
   _MovieViewState createState() => _MovieViewState();
@@ -19,6 +23,7 @@ class MovieView extends StatefulWidget {
 
 class _MovieViewState extends State<MovieView>
     with SingleTickerProviderStateMixin {
+
   @override
   void didUpdateWidget(MovieView oldWidget) {
     // if (oldWidget.listPreferences != widget.listPreferences) {
@@ -106,7 +111,7 @@ class _MovieViewState extends State<MovieView>
                                                               FontWeight.bold),
                                                     ),
                                                   ),
-                                                  Text('(2022)'),
+                                                  Text('(0000)'),
                                                 ],
                                               ),
                                               Row(
@@ -114,7 +119,7 @@ class _MovieViewState extends State<MovieView>
                                                     MainAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Thriler',
+                                                    'Thriller',
                                                     style: TextStyle(),
                                                   ),
                                                   UIHelper
@@ -212,7 +217,7 @@ class _MovieViewState extends State<MovieView>
                                                       ],
                                                     ),
                                                     UIHelper.horizontalSpaceLarge(),
-                                                  
+
                                                   ],
                                                 ),
                                               ))
