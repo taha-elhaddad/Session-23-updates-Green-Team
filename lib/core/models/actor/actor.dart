@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-import '/core/models/serializers.dart';
+import '../serializers.dart';
 
 part 'actor.g.dart';
 
@@ -13,16 +13,17 @@ part 'actor.g.dart';
 ///     receive from an API
 ///
 
-
 abstract class Actor implements Built<Actor, ActorBuilder> {
   int? get id;
 
   String? get name;
 
   String? get img;
+
   String? get thumb;
 
   DateTime? get created_at;
+
   DateTime? get updated_at;
 
   Actor._();

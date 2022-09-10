@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-import '/core/models/serializers.dart';
+import '../serializers.dart';
 
 part 'running_time.g.dart';
 
@@ -15,12 +15,10 @@ part 'running_time.g.dart';
 
 abstract class RunningTime implements Built<RunningTime, RunningTimeBuilder> {
   int? get hours;
+
   int? get minutes;
 
-
   RunningTime._();
-
-
 
   String toJson() {
     return json.encode(serializers.serializeWith(RunningTime.serializer, this));
@@ -42,5 +40,6 @@ abstract class RunningTime implements Built<RunningTime, RunningTimeBuilder> {
 
   static Serializer<RunningTime> get serializer => _$runningTimeSerializer;
 
-  factory RunningTime([void Function(RunningTimeBuilder)? updates]) = _$RunningTime;
+  factory RunningTime([void Function(RunningTimeBuilder)? updates]) =
+      _$RunningTime;
 }

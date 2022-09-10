@@ -3,15 +3,15 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:movieapp/core/constant/constants.dart';
 import 'package:logging/logging.dart';
+import 'package:movieapp/core/constant/constants.dart';
 
-import '/core/exceptions/network_exception.dart';
-import '/core/services/http/http_service.dart';
-import '/core/utils/network_utils.dart' as network_utils;
-import '/locator.dart';
+import '../../../locator.dart';
 import '../../exceptions/invalid_input_exception.dart';
+import '../../exceptions/network_exception.dart';
 import '../../utils/file_helper.dart';
+import '../../utils/network_utils.dart' as network_utils;
+import 'http_service.dart';
 
 /// Helper service that abstracts away common HTTP Requests
 class HttpServiceImpl implements HttpService {

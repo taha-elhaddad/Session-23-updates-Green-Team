@@ -36,8 +36,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import '/core/exceptions/auth_exception.dart';
-import '/core/exceptions/unauthorized_exception.dart';
+import '../../../../core/exceptions/auth_exception.dart';
+import '../../../../core/exceptions/unauthorized_exception.dart';
 import 'generic_error_indicator.dart';
 import 'no_connection_indicator.dart';
 import 'not_authorized_indicator.dart';

@@ -1,13 +1,12 @@
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:provider/provider.dart';
 import 'package:movieapp/provider_setup.dart';
 import 'package:movieapp/ui/router.gr.dart';
 import 'package:movieapp/ui/shared/themes.dart';
+import 'package:provider/provider.dart';
 
 import 'core/services/key_storage/key_storage_service.dart';
 import 'generated/l10n.dart';
@@ -22,7 +21,6 @@ class MyApp extends StatelessWidget {
   MyApp();
 
   final _appRouter = AppRouter();
-
 
   @override
   Widget build(BuildContext context) {

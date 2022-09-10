@@ -14,6 +14,6 @@ class MovieTileViewModel extends BaseViewModel {
   }
 
   Future<void> moveToMovieViewRoute(BuildContext context) async {
-    await locator<NavigationService>().pushNamed(MovieViewRoute(), context);
+    await locator<NavigationService>().pushNamed(MovieViewRoute(movie: movie!), context);
   }
 }

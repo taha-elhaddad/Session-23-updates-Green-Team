@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:movieapp/core/models/movie/movie.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../core/models/actor/actor.dart';

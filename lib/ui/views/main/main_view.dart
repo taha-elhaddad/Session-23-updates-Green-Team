@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movieapp/generated/l10n.dart';
 import 'package:movieapp/ui/views/actors_list/actors_list_view.dart';
 import 'package:movieapp/ui/views/movies_list/movies_list_view.dart';
 import 'package:stacked/stacked.dart';
-import 'package:movieapp/generated/l10n.dart';
 
-import '../posts_list/posts_list_view.dart';
-import '/ui/widgets/animation/fade_in.dart';
-import '../settings/settings_view.dart';
+import '../../widgets/animation/fade_in.dart';
 import 'main_view_model.dart';
 
 class CustomerMainView extends StatefulWidget {
@@ -18,7 +16,8 @@ class CustomerMainView extends StatefulWidget {
 class _CustomerMainViewState extends State<CustomerMainView> {
   final _views = [
     FadeIn(child: MoviesListView()),
-    FadeIn(child: ActorsListView())];
+    FadeIn(child: ActorsListView())
+  ];
 
   @override
   void dispose() {

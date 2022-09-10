@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '/core/constant/asset_images.dart';
+import '../../../../core/constant/asset_images.dart';
 
 /// Indicates that no items were found. ß
 class EmptyListIndicator extends StatelessWidget {

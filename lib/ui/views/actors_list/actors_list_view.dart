@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movieapp/ui/views/actors_list/paged_actors_list_view.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../shared/ui_helper.dart';
+import '../../widgets/stateless/app_bar.dart';
 import '../../widgets/stateless/indicators/loading_circular_progress_indicator.dart';
-import '/ui/widgets/stateless/app_bar.dart';
 import 'actors_list_view_model.dart';
 
 // ignore: must_be_immutable
@@ -44,45 +43,44 @@ class _ActorsListViewState extends State<ActorsListView>
           //drawer: Drawer(child: CustomerDrawerMenu()),
           appBar: MyAppBar('Actors list'),
           body: model.isBusy
-              ?
-          LoadingCircularProgressIndicator() :
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 15, 0, 8),
-                  child: Row(
+              ? LoadingCircularProgressIndicator()
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
                     children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8, right: 8),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                                suffixIcon: Icon(Icons.search),
-                                hintStyle: TextStyle(fontSize: 14),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                hintText: 'Search'),
-                            onChanged: (value) {},
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 15, 0, 8),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 8, right: 8),
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                      suffixIcon: Icon(Icons.search),
+                                      hintStyle: TextStyle(fontSize: 14),
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8)),
+                                      hintText: 'Search'),
+                                  onChanged: (value) {},
+                                ),
+                              ),
+                              flex: 1,
+                            ),
+                          ],
                         ),
-                        flex: 1,
                       ),
-
+                      Expanded(
+                        child: Container(
+                          child: PagedActorsListView({},
+                              onActorsClicked: (move) {}),
+                        ),
+                      )
                     ],
                   ),
-                ),
-                Expanded(
-                  child: Container(
-                    child: PagedActorsListView({},
-                        onActorsClicked: (move) {}
-                    ),
-                  ),
-                )
-              ],
-            ),
-          )),
+                )),
     );
   }
 }

@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import '/core/services/navigation/navigation_service.dart';
-import '/locator.dart';
-import '/ui/router.gr.dart';
+import '../../../core/services/navigation/navigation_service.dart';
+import '../../../locator.dart';
+import '../../router.gr.dart';
 
 class StartUpViewModel extends BaseViewModel {
   BuildContext? context;

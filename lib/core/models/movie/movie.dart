@@ -4,7 +4,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 import '../running_time/running_time.dart';
-import '/core/models/serializers.dart';
+import '../serializers.dart';
 
 part 'movie.g.dart';
 
@@ -15,13 +15,14 @@ part 'movie.g.dart';
 ///
 
 abstract class Movie implements Built<Movie, MovieBuilder> {
-
   String? get id; // uuid
 
   String? get title;
 
   String? get img;
+
   String? get thumb;
+
   String? get release_date;
 
   String? get description;
@@ -31,8 +32,6 @@ abstract class Movie implements Built<Movie, MovieBuilder> {
   RunningTime? get running_time;
 
   DateTime? get created_at;
-
-
 
   Movie._();
 

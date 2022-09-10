@@ -17,12 +17,9 @@ class ActorsListViewModel extends BaseViewModel {
 
     setBusy(true);
 
-    actors_list = await locator<ActorsRepository>().fetchActorsList({'paginate':'1000000'});
+    actors_list = await locator<ActorsRepository>()
+        .fetchActorsList({'paginate': '1000000'});
 
     setBusy(false);
-
-
   }
-
-
 }

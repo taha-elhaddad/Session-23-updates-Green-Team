@@ -3,8 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../core/constant/asset_images.dart';
-import '/ui/views/startup/start_up_view_model.dart';
-import '/ui/widgets/stateless/app_logo.dart';
+import 'start_up_view_model.dart';
 
 class StartUpView extends StatelessWidget {
   @override

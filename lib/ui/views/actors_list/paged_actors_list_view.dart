@@ -3,20 +3,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:movieapp/core/models/movie/movie.dart';
 import 'package:movieapp/generated/l10n.dart';
 import 'package:movieapp/ui/widgets/stateless/actor_tile/actor_tile.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../core/constant/end_point_parameters.dart';
 import '../../../core/models/actor/actor.dart';
 import '../../../core/repositories/actors_repository/actors_repository.dart';
-import '/core/constant/end_point_parameters.dart';
-import '../../../../locator.dart';
-import '../../../core/repositories/movies_repository/movies_repository.dart';
+import '../../../locator.dart';
 import '../../widgets/stateless/indicators/empty_list_indicator.dart';
 import '../../widgets/stateless/indicators/error_indicator.dart';
 import '../../widgets/stateless/indicators/loading_circular_progress_indicator.dart';
-import '../../widgets/stateless/movie_tile/movie_tile.dart';
 import 'actors_list_view_model.dart';
 
 // ignore: must_be_immutable

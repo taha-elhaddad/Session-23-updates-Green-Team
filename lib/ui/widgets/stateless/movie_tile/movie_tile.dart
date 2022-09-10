@@ -34,6 +34,7 @@ class MovieTile extends StatelessWidget {
                   child: Container(
                     //color: Colors.r,
                     child: Image.network(
+                      //TODO: The backup image should be stored locally.
                       movie.thumb ??
                           'https://freepikpsd.com/file/2019/10/placeholder-image-png-5-Transparent-Images.png',
                       fit: BoxFit.cover,
@@ -59,7 +60,8 @@ class MovieTile extends StatelessWidget {
                                 ),
                               ),
                               UIHelper.horizontalSpaceSmall(),
-                              Text("${DateTime.parse(movie.release_date!).year}"),
+                              Text(
+                                  "${DateTime.parse(movie.release_date!).year}"),
                             ],
                           ),
                           Row(
@@ -78,8 +80,8 @@ class MovieTile extends StatelessWidget {
                             children: [
                               Expanded(
                                   child: Text(
-                                  movie.description!,
-                                  maxLines: 3,
+                                movie.description!,
+                                maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(),
                               )),

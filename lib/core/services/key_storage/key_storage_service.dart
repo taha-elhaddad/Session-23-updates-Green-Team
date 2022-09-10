@@ -1,5 +1,4 @@
 abstract class KeyStorageService {
-
   void remove(String key);
 
   void removeEveryThing();

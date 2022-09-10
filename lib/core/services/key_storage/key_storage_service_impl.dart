@@ -1,7 +1,7 @@
 import 'package:logging/logging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '/core/services/key_storage/key_storage_service.dart';
+import 'key_storage_service.dart';
 
 /// Service that is responsible for storing/retrieving data in/from
 /// local storage using the [SharedPreferences] package.
@@ -24,8 +24,11 @@ class KeyStorageServiceImpl implements KeyStorageService {
     return _instance;
   }
 
-  @override String get locale => getFromDisk(locale_key) ?? '';
-  @override String get app_title => getFromDisk(app_title_key) ?? 'none';
+  @override
+  String get locale => getFromDisk(locale_key) ?? '';
+
+  @override
+  String get app_title => getFromDisk(app_title_key) ?? 'none';
 
   @override
   set locale(String? _user_token) {

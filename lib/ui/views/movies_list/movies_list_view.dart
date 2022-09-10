@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movieapp/ui/views/movies_list/paged_movies_list_view.dart';
 import 'package:stacked/stacked.dart';
 
-import '/ui/widgets/stateless/app_bar.dart';
+import '../../../core/models/genre/genre.dart';
+import '../../widgets/stateless/app_bar.dart';
 import '../../widgets/stateless/indicators/loading_circular_progress_indicator.dart';
 import 'movies_list_view_model.dart';
 
@@ -64,7 +65,10 @@ class _MoviesListViewState extends State<MoviesListView>
                                           borderRadius:
                                               BorderRadius.circular(8)),
                                       hintText: 'Search'),
-                                  onChanged: (value) {},
+                                  onChanged: (value) {
+                                    model.q=value;
+                                    model.notifyListeners();
+                                  },
                                 ),
                               ),
                               flex: 1,
@@ -75,26 +79,25 @@ class _MoviesListViewState extends State<MoviesListView>
                                       const EdgeInsets.only(left: 8, right: 8),
                                   child: SizedBox(
                                     height: 58,
-                                    child: DropdownButtonFormField<String>(
+                                    child: DropdownButtonFormField<Genre>(
                                       decoration: InputDecoration(
                                         hintStyle: TextStyle(fontSize: 14),
                                         border: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(8)),
                                       ),
-                                      value: 'Two',
+                                      value: model.selected_genre,
                                       iconEnabledColor: Colors.grey,
-                                      onChanged: (String? value) {},
-                                      items: <String>[
-                                        'One',
-                                        'Two',
-                                        'Three',
-                                        'Four'
-                                      ].map<DropdownMenuItem<String>>(
-                                          (String value) {
-                                        return DropdownMenuItem<String>(
+                                      onChanged: (Genre? value) {
+                                        model.selected_genre=value;
+                                        model.notifyListeners();
+                                      },
+                                      items:
+                                      model.genres_list.map<DropdownMenuItem<Genre>>(
+                                          (Genre value) {
+                                        return DropdownMenuItem<Genre>(
                                           value: value,
-                                          child: Text(value),
+                                          child: Text(value.name!),
                                         );
                                       }).toList(),
                                     ),
@@ -106,9 +109,12 @@ class _MoviesListViewState extends State<MoviesListView>
                       ),
                       Expanded(
                         child: Container(
-                          child: PagedMoviesListView({},
-                              onMoviesClicked: (move) {}
-                          ),
+                          child: PagedMoviesListView(
+                              {if (model.q!.isNotEmpty)
+                                'q': model.q!,
+                                "filters":"genres:[${model.selected_genre!.id}]"
+                              },
+                              onMoviesClicked: (move) {}),
                         ),
                       )
                     ],

@@ -14,7 +14,6 @@ class AssetImages {
   static const google_maps_icon = 'assets/images/social_icons/google_maps_icon';
   static const whatss_app_icon = 'assets/images/social_icons/whatss_app.svg';
 
-
   static String photo = 'assets/images/photo.png';
 
   //Sadeem Icons

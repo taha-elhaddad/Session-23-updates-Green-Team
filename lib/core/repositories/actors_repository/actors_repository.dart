@@ -2,17 +2,13 @@ import 'dart:async';
 
 import 'package:logging/logging.dart';
 
+import '../../../locator.dart';
 import '../../data_sources/actors/actors_remote_data_source.dart';
-import '../../data_sources/movies/movies_remote_data_source.dart';
+import '../../exceptions/cache_exception.dart';
+import '../../exceptions/network_exception.dart';
+import '../../exceptions/repository_exception.dart';
 import '../../models/actor/actor.dart';
-import '../../models/movie/movie.dart';
-import '/core/exceptions/cache_exception.dart';
-import '/core/exceptions/network_exception.dart';
-import '/core/exceptions/repository_exception.dart';
-import '/core/services/connectivity/connectivity_service.dart';
-import '/locator.dart';
-import '../../data_sources/posts/post_remote_data_source.dart';
-import '../../models/post/post.dart';
+import '../../services/connectivity/connectivity_service.dart';
 
 abstract class ActorsRepository {
   Future<Actor> fetchActor([Map<String, dynamic>? parameters]);
@@ -30,7 +26,6 @@ class ActorsRepositoryImpl implements ActorsRepository {
 
   @override
   Future<Actor> fetchActor([Map<String, dynamic>? parameters]) async {
-
     try {
       if (await connectivityService!.isConnected) {
         final data = await remoteDataSource!.fetchActor(parameters);
@@ -49,9 +44,9 @@ class ActorsRepositoryImpl implements ActorsRepository {
   }
 
   @override
-  Future<List<Actor>> fetchActorsList([Map<String, dynamic>? parameters]) async {
+  Future<List<Actor>> fetchActorsList(
+      [Map<String, dynamic>? parameters]) async {
     try {
-
       final items = await remoteDataSource!.fetchActorsList(parameters);
 
       return items;

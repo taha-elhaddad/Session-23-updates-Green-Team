@@ -4,17 +4,16 @@ import 'package:dio/dio.dart';
 // ignore: library_prefixes
 import 'package:flutter/foundation.dart';
 
-import '/core/exceptions/auth_exception.dart';
-import '/core/exceptions/network_exception.dart';
-import '/core/exceptions/server_exception.dart';
-import '/core/exceptions/token_expired_exception.dart';
-import '/core/exceptions/unauthorized_exception.dart';
-import '/core/services/key_storage/key_storage_service.dart';
 import '../../locator.dart';
+import '../exceptions/auth_exception.dart';
+import '../exceptions/network_exception.dart';
+import '../exceptions/server_exception.dart';
+import '../exceptions/token_expired_exception.dart';
+import '../exceptions/unauthorized_exception.dart';
+import '../services/key_storage/key_storage_service.dart';
 
 void checkForNetworkExceptions(Response response) {
   if (response.statusCode == 401) {
-
     locator<KeyStorageService>().removeEveryThing();
 
     throw UnauthorizedException('Unauthorized user Error');
@@ -56,8 +55,6 @@ Future<void> AuthCheck(jsonData) async {
     }
   }
 }
-
-
 
 void showLoadingProgress(received, total) {
   if (total != -1) {

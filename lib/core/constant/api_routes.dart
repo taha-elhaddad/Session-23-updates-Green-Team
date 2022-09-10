@@ -10,8 +10,7 @@ class ApiRoutes {
   static String actors = '$base/actors';
   static String genres = '$base/genres';
 
-
-  static String post(String? id) => '$base/post/$id';
-
-
+  static String actor(String? id) => '$base/actor/$id';
+  static String genre(String? id) => '$base/genres/$id';
+  static String movie(String? id) => '$base/movies/$id';
 }

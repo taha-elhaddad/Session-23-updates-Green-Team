@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../app.dart';
-import '../../core/constant/app_colors.dart';
-import '../../core/constant/constants.dart';
-import '../../core/services/key_storage/key_storage_service.dart';
-import '../../locator.dart';
-
 /// Contains useful functions to reduce boilerplate code
 class UIHelper {
-
-
-
   // Vertical spacing constants. Adjust to your liking.
   static const double _VerticalSpaceSmall = 4;
   static const double _VerticalSpaceMedium = 8;
@@ -73,6 +64,4 @@ class UIHelper {
   static Widget horizontalSpace(double width) {
     return Container(width: width);
   }
-
-
 }

@@ -1,6 +1,6 @@
-import '/core/enums/connectivity_status.dart';
+import '../../enums/connectivity_status.dart';
 
-abstract class ConnectivityService  {
+abstract class ConnectivityService {
   Stream<ConnectivityStatus> get connectivity$;
 
   Future<bool> get isConnected;

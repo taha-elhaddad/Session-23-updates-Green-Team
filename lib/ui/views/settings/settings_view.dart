@@ -1,17 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
 import 'package:movieapp/core/services/key_storage/key_storage_service.dart';
 import 'package:movieapp/generated/l10n.dart';
 import 'package:movieapp/ui/views/settings/settings_view_model.dart';
+import 'package:stacked/stacked.dart';
 
-import '../../../core/services/navigation/navigation_service.dart';
-import '../../router.gr.dart';
-import '/ui/shared/ui_helper.dart';
-import '/ui/widgets/stateless/app_bar.dart';
-import '../../../app.dart';
-import '../../../core/constant/constants.dart';
 import '../../../locator.dart';
+import '../../shared/ui_helper.dart';
+import '../../widgets/stateless/app_bar.dart';
 import '../../widgets/stateless/app_logo.dart';
 
 class SettingsView extends StatefulWidget {
@@ -40,7 +36,7 @@ class _SettingsViewState extends State<SettingsView> {
       onModelReady: (model) async {
         await model.init(context);
       },
-      builder: (context, model, child) =>  Scaffold(
+      builder: (context, model, child) => Scaffold(
           appBar: MyAppBar(),
           body: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
@@ -65,7 +61,7 @@ class _SettingsViewState extends State<SettingsView> {
                                   top: 6, right: 12, left: 12),
                               child: Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     AppLocalizations.of(context)
@@ -81,12 +77,10 @@ class _SettingsViewState extends State<SettingsView> {
                                           .isNotification!,
                                       onChanged: (_) {
                                         setState(() {
-
                                           locator<KeyStorageService>()
-                                              .isNotification = (!locator<
-                                              KeyStorageService>()
-                                              .isNotification!);
-
+                                                  .isNotification =
+                                              (!locator<KeyStorageService>()
+                                                  .isNotification!);
                                         });
                                         //model.update();
                                       },
@@ -112,28 +106,23 @@ class _SettingsViewState extends State<SettingsView> {
                       ),
                       child: InkWell(
                         onTap: () async {
-
                           await showModalBottomSheet(
                               isScrollControlled: true,
                               context: context,
                               builder: (ctx) {
                                 return StatefulBuilder(
                                   builder: (BuildContext context_,
-                                      void Function(void Function())
-                                      setState) {
+                                      void Function(void Function()) setState) {
                                     return Container(
                                       color: Theme.of(context)
                                           .scaffoldBackgroundColor,
-                                      height: MediaQuery.of(context)
-                                          .size
-                                          .height *
-                                          0.6,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.6,
                                       child: Center(
                                         child: Padding(
-                                          padding:
-                                          const EdgeInsets.symmetric(
-                                              vertical: 32,
-                                              horizontal: 16),
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 32, horizontal: 16),
                                           child: Column(
                                             children: [
                                               const SizedBox(
@@ -152,11 +141,10 @@ class _SettingsViewState extends State<SettingsView> {
                                                 height: 15,
                                               ),
                                               Text(
-                                                AppLocalizations.of(context).about_app,
-                                                textAlign:
-                                                TextAlign.center,
-                                                style: TextStyle(
-                                                    fontSize: 12),
+                                                AppLocalizations.of(context)
+                                                    .about_app,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(fontSize: 12),
                                               ),
                                               Spacer(),
                                               const SizedBox(
@@ -178,11 +166,10 @@ class _SettingsViewState extends State<SettingsView> {
                                   top: 25, right: 12, left: 12),
                               child: Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    AppLocalizations.of(context)
-                                        .about_app,
+                                    AppLocalizations.of(context).about_app,
                                     style: TextStyle(fontSize: 13),
                                   ),
                                   Padding(
@@ -202,7 +189,6 @@ class _SettingsViewState extends State<SettingsView> {
                     ),
                     UIHelper.verticalSpaceMedium(),
                     UIHelper.verticalSpaceMedium(),
-
                   ],
                 ),
               ],

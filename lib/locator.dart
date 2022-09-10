@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:get_it/get_it.dart';
 import 'package:movieapp/core/services/connectivity/connectivity_service.dart';
 import 'package:movieapp/core/services/connectivity/connectivity_service_impl.dart';
 import 'package:movieapp/core/services/http/http_service.dart';
@@ -9,14 +10,11 @@ import 'package:movieapp/core/services/key_storage/key_storage_service_impl.dart
 import 'package:movieapp/core/services/navigation/navigation_service.dart';
 import 'package:movieapp/core/services/navigation/navigation_service_impl.dart';
 import 'package:movieapp/core/utils/file_helper.dart';
-import 'package:get_it/get_it.dart';
 
 import 'core/data_sources/actors/actors_remote_data_source.dart';
 import 'core/data_sources/movies/movies_remote_data_source.dart';
-import 'core/data_sources/posts/post_remote_data_source.dart';
 import 'core/repositories/actors_repository/actors_repository.dart';
 import 'core/repositories/movies_repository/movies_repository.dart';
-import 'core/repositories/posts_repository/posts_repository.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -40,19 +38,13 @@ Future<void> setupLocator() async {
 
   // Data sources
 
-  locator.registerLazySingleton<PostsRemoteDataSource>(
-    () => PostsRemoteDataSourceImpl(),
-  );
-
   locator.registerLazySingleton<MoviesRemoteDataSource>(
     () => MoviesRemoteDataSourceImpl(),
   );
 
   locator.registerLazySingleton<ActorsRemoteDataSource>(
-        () => ActorsRemoteDataSourceImpl(),
+    () => ActorsRemoteDataSourceImpl(),
   );
-
-  locator.registerLazySingleton<PostsRepository>(() => PostsRepositoryImpl());
 
   locator.registerLazySingleton<MoviesRepository>(() => MoviesRepositoryImpl());
 

@@ -6,7 +6,6 @@ import 'package:built_value/standard_json_plugin.dart';
 import 'package:movieapp/core/models/actor/actor.dart';
 import 'package:movieapp/core/models/running_time/running_time.dart';
 
-import '/core/models/post/post.dart';
 import 'genre/genre.dart';
 import 'movie/movie.dart';
 
@@ -19,7 +18,6 @@ part 'serializers.g.dart';
   Movie,
   Actor,
   RunningTime,
-  Post,
 ])
 
 /// Can add additional plugins that will serialize types like [DateTime]

@@ -1,10 +1,9 @@
 import 'dart:async';
 
+import '../../../locator.dart';
+import '../../constant/api_routes.dart';
 import '../../models/actor/actor.dart';
-import '/core/constant/api_routes.dart';
-import '/core/services/http/http_service.dart';
-import '/locator.dart';
-import '../../models/movie/movie.dart';
+import '../../services/http/http_service.dart';
 
 abstract class ActorsRemoteDataSource {
   Future<Actor> fetchActor([Map<String, dynamic>? parameters]);
@@ -18,7 +17,7 @@ class ActorsRemoteDataSourceImpl implements ActorsRemoteDataSource {
   @override
   Future<Actor> fetchActor([Map<String, dynamic>? parameters]) async {
     Map<String, dynamic> restData = await (httpService!
-        .getHttp(ApiRoutes.post(parameters!['id']), parameters));
+        .getHttp(ApiRoutes.actor(parameters!['id']), parameters));
 
     return Actor.fromMap(restData['data']);
   }
@@ -31,7 +30,8 @@ class ActorsRemoteDataSourceImpl implements ActorsRemoteDataSource {
 
     var list = jsonData['data'] as List<dynamic>;
 
-    var items = list.map<Actor>((vendorMap) => Actor.fromMap(vendorMap)).toList();
+    var items =
+        list.map<Actor>((vendorMap) => Actor.fromMap(vendorMap)).toList();
 
     return items;
   }

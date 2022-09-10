@@ -64,8 +64,7 @@ class ActorTile extends StatelessWidget {
                           UIHelper.horizontalSpaceLarge(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                            ],
+                            children: [],
                           ),
                         ],
                       ),

@@ -7,9 +7,9 @@ import 'package:movieapp/core/models/movie/movie.dart';
 import 'package:movieapp/generated/l10n.dart';
 import 'package:stacked/stacked.dart';
 
-import '/core/constant/end_point_parameters.dart';
-import '../../../../locator.dart';
+import '../../../core/constant/end_point_parameters.dart';
 import '../../../core/repositories/movies_repository/movies_repository.dart';
+import '../../../locator.dart';
 import '../../widgets/stateless/indicators/empty_list_indicator.dart';
 import '../../widgets/stateless/indicators/error_indicator.dart';
 import '../../widgets/stateless/indicators/loading_circular_progress_indicator.dart';
@@ -48,9 +48,7 @@ class _PagedMoviesItemsListViewViewState extends State<PagedMoviesListView> {
 
   @override
   void didUpdateWidget(PagedMoviesListView oldWidget) {
-    // if (oldWidget.listPreferences != widget.listPreferences) {
-    //   widget.pagingController.refresh();
-    // }
+    _pagingController.refresh();
     super.didUpdateWidget(oldWidget);
   }
 

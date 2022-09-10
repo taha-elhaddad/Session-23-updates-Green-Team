@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m0(firstName) => "مرحباً ${firstName}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
+
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_app": MessageLookupByLibrary.simpleMessage("عن التطبيق"),
         "about_developers":

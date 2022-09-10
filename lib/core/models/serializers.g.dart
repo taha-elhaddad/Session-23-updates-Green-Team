@@ -10,7 +10,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Actor.serializer)
       ..add(Genre.serializer)
       ..add(Movie.serializer)
-      ..add(Post.serializer)
       ..add(RunningTime.serializer))
     .build();
 
